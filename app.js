@@ -1,6 +1,6 @@
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  path = require('path') 
+bodyParser = require('body-parser'),
+path = require('path') 
 var app = express();
 var crypto = require("crypto");
 var consumerSecretApp = process.env.CANVAS_CONSUMER_SECRET || '5AE4CA1543118B24EDA3A67A68BFB4AB7564E6229C33AABD09416D36BC9CA3CB';
@@ -37,7 +37,7 @@ app.post('/', function (req, res) {
         res.send("authentication failed");
     } 
 })
- 
-app.listen(3000 , function () {
+
+app.listen(process.env.PORT || 5000 , function () {
 	console.log ("server is listening!!!");
 } );
