@@ -29,10 +29,11 @@ app.post('/', function (req, res) {
     if (check === consumerSecret) { 
         var envelope = JSON.parse(Buffer.from(encoded_envelope, "base64").toString("ascii"));
         //req.session.salesforce = envelope;
-        console.log("got the session object:");
-        console.log(envelope);
-        console.log(JSON.stringify(envelope) );
-        res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
+        //console.log("got the session object:");
+        //console.log(envelope);
+        console.log('JSON: ' + JSON.stringify(envelope));
+        //res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
+        res.render('index', { title: envelope.context.user.userName, req : envelope });
     }else{
         res.send("authentication failed");
     } 
