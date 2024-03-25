@@ -36,16 +36,14 @@
 
     </div>  
     <script>
-        let req = "<%= req %>"  ;
+        let req = "<%= req %>";
         console.log('req: ' + req);
-        //var decodedString = req.split('&quot;').join('"')  ;  
-        var wrapper = document.getElementById("reqCode"); 
-        // or from a string by JSON.parse(str) method
-        // var dataStr = decodedString;
+        var decodedString = req.split('&#34;').join('"');
+        console.log('decodedString: ' + decodedString);
+        var wrapper = document.getElementById("reqCode");
         try {
-            //var data = JSON.parse(dataStr);
-            var data = JSON.parse(req);
-            console.log('req: ' + req);
+            var data = JSON.parse(decodedString);
+            console.log('data: ' + data);
         } catch (e) {}
 
         // Create json-tree
