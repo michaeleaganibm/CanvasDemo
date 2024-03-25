@@ -27,7 +27,7 @@ app.post('/', function (req, res) {
     console.log('check: ' + check);
 
     if (check === consumerSecret) { 
-        var envelope = JSON.parse(new Buffer(encoded_envelope, "base64").toString("ascii"));
+        var envelope = JSON.parse(Buffer.from(encoded_envelope, "base64").toString("ascii"));
         //req.session.salesforce = envelope;
         console.log("got the session object:");
         console.log(envelope);
