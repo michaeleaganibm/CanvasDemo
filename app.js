@@ -3,18 +3,14 @@ bodyParser = require('body-parser'),
 path = require('path') 
 var app = express();
 var crypto = require("crypto");
-var consumerSecretApp = process.env.CANVAS_CONSUMER_SECRET || '5AE4CA1543118B24EDA3A67A68BFB4AB7564E6229C33AABD09416D36BC9CA3CB';
-
-console.log('consumer secret - '+consumerSecretApp);
+var consumerSecretApp = process.env.CANVAS_CONSUMER_SECRET;
 
 app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(bodyParser.json());
  
-
 app.get('/', function (req, res) {
   res.render('hello');
 });
@@ -38,6 +34,6 @@ app.post('/', function (req, res) {
     } 
 })
 
-app.listen(process.env.PORT || 5000 , function () {
-	console.log ("server is listening!!!");
+app.listen(process.env.PORT, function () {
+	console.log ("Server is listening!");
 } );
