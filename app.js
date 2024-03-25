@@ -20,18 +20,16 @@ app.post('/', function (req, res) {
   var bodyArray = req.body.signed_request.split(".");
     var consumerSecret = bodyArray[0];
     var encoded_envelope = bodyArray[1];
-
+    
     var check = crypto.createHmac("sha256", consumerSecretApp).update(encoded_envelope).digest("base64");
-    console.log('check: ' + check);
-
     if (check === consumerSecret) { 
         var envelope = JSON.parse(Buffer.from(encoded_envelope, "base64").toString("ascii"));
         res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
-    }else{
+    } else {
         res.send("authentication failed");
     } 
 })
 
-app.listen(process.env.PORT, function () {
-	console.log ("Server is listening!");
+app.listen (process.env.PORT, function () {
+  console.log ("Server is listening!");
 } );
