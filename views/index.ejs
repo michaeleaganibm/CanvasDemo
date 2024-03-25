@@ -37,12 +37,13 @@
     </div>  
     <script>
         let req = "<%= req %>"  ; 
-        var decodedString = req.split('&quot;').join('"')  ;  
+        //var decodedString = req.split('&quot;').join('"')  ;  
         var wrapper = document.getElementById("reqCode"); 
         // or from a string by JSON.parse(str) method
         var dataStr = decodedString;
         try {
-            var data = JSON.parse(dataStr);
+            //var data = JSON.parse(dataStr);
+            var data = JSON.parse(req);
         } catch (e) {}
 
         // Create json-tree
