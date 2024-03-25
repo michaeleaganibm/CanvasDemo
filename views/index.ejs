@@ -29,7 +29,7 @@
         </div> 
      
         <p>
-            <div id="reqCode">
+            <div id="reqCode" style="min-height:100px;">
 
             </div>
         </p>
@@ -37,16 +37,11 @@
     </div>  
     <script>
         let req = "<%= req %>";
-        console.log('req: ' + req);
         var decodedString = req.split('&#34;').join('"');
-        console.log('decodedString: ' + decodedString);
         var wrapper = document.getElementById("reqCode");
         try {
             var data = JSON.parse(decodedString);
-            console.log('data: ' + data);
         } catch (e) {}
-
-        // Create json-tree
         var tree = jsonTree.create(data, wrapper); 
     </script>
 </body> 
