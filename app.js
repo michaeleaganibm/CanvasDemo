@@ -32,8 +32,7 @@ app.post('/', function (req, res) {
         //console.log("got the session object:");
         //console.log(envelope);
         console.log('JSON: ' + JSON.stringify(envelope));
-        //res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
-        res.render('index', { title: envelope.context.user.userName, req : envelope });
+        res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
     }else{
         res.send("authentication failed");
     } 
