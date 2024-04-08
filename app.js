@@ -24,10 +24,12 @@ app.post('/', function (req, res) {
     var check = crypto.createHmac("sha256", consumerSecretApp).update(encoded_envelope).digest("base64");
     if (check === consumerSecret) { 
         var envelope = JSON.parse(Buffer.from(encoded_envelope, "base64").toString("ascii"));
-        res.header('X-Frame-Options', 'SAMEORIGIN');
+        //res.header('X-Frame-Options', 'SAMEORIGIN');
+        res.header('Content-Security-Policy', '\'self\' https://salesforce.com');
         res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
     } else {
-        res.header('X-Frame-Options', 'SAMEORIGIN');
+        //res.header('X-Frame-Options', 'SAMEORIGIN');
+        res.header('Content-Security-Policy', '\'self\' https://salesforce.com');
         res.send("authentication failed");
     } 
 })
