@@ -24,12 +24,12 @@ app.post('/', function (req, res) {
     var check = crypto.createHmac("sha256", consumerSecretApp).update(encoded_envelope).digest("base64");
     if (check === consumerSecret) { 
         var envelope = JSON.parse(Buffer.from(encoded_envelope, "base64").toString("ascii"));
-        //res.header('X-Frame-Options', 'SAMEORIGIN');
-        res.header('Content-Security-Policy', 'frame-ancestors \'self\' https://eagan-ibm-dev-ed.my.salesforce.com https://eagan-ibm-dev-ed.lightning.force.com');
+        res.header('X-Frame-Options', 'SAMEORIGIN');
+        res.header('Content-Security-Policy', 'frame-ancestors \'self\' https://eagan-ibm-dev-ed--c.vf.force.com');
         res.render('index', { title: envelope.context.user.userName, req : JSON.stringify(envelope) });
     } else {
         res.header('X-Frame-Options', 'SAMEORIGIN');
-        res.header('Content-Security-Policy', 'frame-ancestors \'self\' https://*.lightning.force.com');
+        res.header('Content-Security-Policy', 'frame-ancestors \'self\' https://eagan-ibm-dev-ed--c.vf.force.com');
         res.send("authentication failed");
     } 
 })
