@@ -14,9 +14,14 @@ app.use(bodyParser.json());
  
 app.get('/', function (req, res) {
   res.render('hello');
+});
+
+app.get('/test', function (req, res) {
+  res.render('hello');
   res.header('X-Frame-Options', 'SAMEORIGIN');
   res.header('Content-Security-Policy', 'frame-ancestors \'self\' https://marspulse--maverikibm.sandbox.lightning.force.com');
 });
+
 
 app.post('/', function (req, res) { 
   var bodyArray = req.body.signed_request.split(".");
