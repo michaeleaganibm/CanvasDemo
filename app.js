@@ -20,7 +20,8 @@ app.post('/', function (req, res) {
   var bodyArray = req.body.signed_request.split(".");
     var consumerSecret = bodyArray[0];
     var encoded_envelope = bodyArray[1];
-    
+
+    // comment to force deploy
     var check = crypto.createHmac("sha256", consumerSecretApp).update(encoded_envelope).digest("base64");
     if (check === consumerSecret) { 
         var envelope = JSON.parse(Buffer.from(encoded_envelope, "base64").toString("ascii"));
